@@ -18,9 +18,8 @@ export class App extends Component {
     this.renderer.setSize(width, height);
     this.mount.appendChild(this.renderer.domElement);
 
-    const controls = new OrbitControls(this.camera, this.renderer.domElement);
-    //Add SPHERE
-    //LOAD TEXTURE and on completion apply it on box
+    this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+
     const loader = new THREE.TextureLoader();
     const fontLoader = new THREE.FontLoader();
     loader.load(
@@ -56,6 +55,7 @@ export class App extends Component {
   componentWillUnmount() {
     this.stop();
     this.mount.removeChild(this.renderer.domElement);
+    this.controls.dispose();
   }
   start = () => {
     if (!this.frameId) {
@@ -79,8 +79,6 @@ export class App extends Component {
 
   onLoadBackground = texture => {
     scene.background = texture;
-    // this.earthMesh = new THREE.Mesh(objGeometry, objMaterial);
-    // scene.add(this.earthMesh);
     this.renderScene();
     //start animation
     this.start();
