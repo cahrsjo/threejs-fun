@@ -124,7 +124,7 @@ export class App extends Component {
       metalness: 0,
       color: 'hotpink'
     });
-    const fontGeometry = new THREE.TextGeometry( 'SAVE THE PLANET', {
+    const fontGeometry = new THREE.TextGeometry( 'SAVE THE PLANET\n     #FEDEX2020\n       #CORONA', {
       font: font,
       size: 0.1,
       height: 0.01,
